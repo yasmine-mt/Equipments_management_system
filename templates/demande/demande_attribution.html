@@ -1,0 +1,60 @@
+
+{% extends 'main2.html' %}
+
+{% block content %}
+<style>
+  tbody tr:nth-child(odd) {
+    background-color: #F2F2F2; /* Gris clair */
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #E6E6E6; /* Gris plus foncé */
+  }
+
+  table {
+    background-color: #FFFFFF; /* Blanc */
+  }
+</style>
+
+<br>
+
+
+<center>
+
+
+  <center>
+	<div class="col-12">
+		 <h5>Liste des demandes d'attribution</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+			<tr>
+					<th>ID_demande</th>
+					<th>ID_Employé</th>
+					<th>Matériel</th>
+					<th>Date</th>
+					<th>Nature</th>
+          <th>Attribuer un matériel à un employé</th>
+        </tr>
+        {% for demande_obj in demandes %}
+            {% if demande_obj.type == 'Attribution' %}
+                <tr>
+                    <td>{{ demande_obj.ID_D }}</td>
+                    <td>{{ demande_obj.employe }}</td>
+                    <td>{{ demande_obj.materiel }}</td>
+                    <td>{{ demande_obj.date_creation }}</td>
+                    <td>{{ demande_obj.statuts }}</td>
+                    {% if demande_obj.statuts == 'non traitée' %}
+                        <td><a class='btn btn-sm btn-success' href="{% url 'attribuer_materiel_employe' demande_obj.ID_D %}">Attribuer un matériel à un employé</a></td>
+                    {% endif %}
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+ 
+    
+    
+
+		</div>
+	</div></center>
+{% endblock %}

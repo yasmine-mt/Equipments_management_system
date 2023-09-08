@@ -1,0 +1,71 @@
+{% extends 'main.html' %}
+{% block content %}
+<style>
+    .content-container {
+        margin-left: 350px;
+        margin-bottom: 0%;
+        margin-right: 50px;
+    }
+</style>
+<section class="dashboard">
+<br>
+<div class="content-container">
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Employé:</h5>
+            <hr>
+            <p>Identifiant : {{employe.ID_E}}</p>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Informations</h5>
+            <hr>
+            <p>Nom : {{employe.nomE}} </p>
+            <p>Département: {{employe.departement}}</p>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Total des demandes</h5>
+            <hr>
+            <h1 style="text-align: center;padding: 10px">{{demande_total}}</h1>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+        
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Identifiant demande</th>
+                        <th>Date de demande</th>
+                        <th>Status</th>
+                        <th>Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for demande in demandes %}
+                    <tr>
+                        <td>{{ demande.ID_D }}</td>
+                        <td>{{ demande.date_creation }}</td>
+                        <td>{{ demande.statuts }}</td>
+                        <td><a href="{% url 'supprimer_demande' demande.ID_D %}">Supprimer</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+</div>
+</section>
+{% endblock content%}

@@ -1,0 +1,51 @@
+{% extends 'main3.html' %}
+
+{% block content %}
+
+
+<br>
+<div class="content-container">
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Technicien:</h5>
+            <hr>
+            <p>Identifiant : {{technicien.ID_T}}</p>
+            <p>Nom : {{technicien.Nom}} </p>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Demandes assignées</h5>
+            <hr>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Identifiant demande</th>
+                        <th>Date de demande</th>
+                        <th>Status</th>
+                        <th>Signaler la réparation</th>
+                    </tr>
+                </thead>
+              <tbody>
+    {% for demande in demandes_assignees %}
+    <tr>
+        <td>{{ demande.ID_D }}</td>
+        <td>{{ demande.date_creation }}</td>
+        <td>{{ demande.statuts }}</td>
+        <td><a href="{% url 'signaler_reparation' demande.ID_D %}">Signaler la réparation</a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+
+            </table>
+        </div></div>
+    </div>
+</div>
+
+{% endblock content %}

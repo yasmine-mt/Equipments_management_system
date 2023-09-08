@@ -1,0 +1,46 @@
+{% extends 'main2.html' %}
+
+{% block content %}
+<style>
+  tbody tr:nth-child(odd) {
+    background-color: #F2F2F2; /* Gris clair */
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #E6E6E6; /* Gris plus foncé */
+  }
+
+  table {
+    background-color: #FFFFFF; /* Blanc */
+  }
+</style>
+
+<br>
+
+
+ <center>
+	<div class="col-12">
+		<h5>Les Employés</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary btn-sm btn-block" href="{% url 'creer_employe' %}">Créer Un Employé</a>
+
+			<table class="table table-sm">
+				<tr>
+					<th>ID_Employé</th>
+					<th>Employé</th>
+					<th>Département</th>
+					<th>Détails</th>
+				</tr>
+				{% for employe in employes  %}
+				<tr>
+				<th><a href= "{% url 'employe' employe.id %}">{{employe.ID_E}}</a></th>
+
+				<th>{{employe.nomE}}</th>
+				<th>{{employe.departement}}</th>
+				<th><a class='btn btn-sm btn-success'href= "{% url 'employe' employe.id %}">Détails</a></th></tr>
+			   {% endfor %}
+			</table>
+		</div>
+	</div></center>
+{% endblock content%}

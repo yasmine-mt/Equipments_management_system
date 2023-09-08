@@ -1,0 +1,51 @@
+{% extends 'main2.html' %}
+
+{% block content %}
+<style>
+  tbody tr:nth-child(odd) {
+    background-color: #F2F2F2; /* Gris clair */
+  }
+
+  .custom-table {
+    width:100%; /* Définir la largeur du tableau à 100% */
+    font-size: 16px; /* Ajuster la taille de la police selon vos préférences */
+  }
+  tbody tr:nth-child(even) {
+    background-color: #E6E6E6; /* Gris plus foncé */
+  }
+
+  table {
+    background-color: #FFFFFF; /* Blanc */
+  }
+</style>
+
+<br>
+
+<center>
+   <div class="col-12">
+       <h5>Les Techniciens</h5>
+        <hr>
+        <div class="card card-body w-200">
+            <a class="btn btn-secondary btn-info btn-block" href="{% url 'ajout_technicien' %}">Ajouter un Technicien</a>
+           <div class="table-responsive">
+  <table class="table table-sm table-lg table-responsive-xl custom-table">
+                    <tr>
+                        <th>ID_Technicien </th>
+                        <th>Nom</th>
+                        <th>Statut</th>
+                        <th>Supprimer</th>
+                    </tr>
+                    {% for technicien in techniciens %}
+                    <tr>
+                        <th>{{ technicien.ID_T }}</th>
+                        <th>{{ technicien.Nom }}</th>
+                        <th>{{ technicien.statuts }}</th>
+                        <th><a class='btn btn-sm btn-success' href="{% url 'supprimer_technicien' technicien.ID_T %}">Supprimer</a></th>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</center>
+{% endblock content %}

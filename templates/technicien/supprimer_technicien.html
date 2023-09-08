@@ -1,0 +1,11 @@
+{% extends 'main2.html'%}
+{% block content %}
+
+
+    <p>Voulez vous supprimer ce technicien ? </p>
+ <form action="{% url 'supprimer_technicien' item.ID_T %}" method="post">
+  {% csrf_token %}
+  <a class="btn btn-warning" href="{% url 'xtechnicien' %}">Annuler</a>
+        <input class="btn btn-danger" type="submit" value="Confirmer">
+</form>
+{% endblock %}

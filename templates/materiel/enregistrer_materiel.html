@@ -1,0 +1,24 @@
+{% extends 'main2.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-12">
+        <div class="card card-cody">
+            <form action="{% url 'enreg_materiel' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        {{ form }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input type="submit" value="Valider" class="btn btn-primary">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+{% endblock %}

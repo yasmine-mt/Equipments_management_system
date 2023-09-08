@@ -1,0 +1,69 @@
+{% extends 'main2.html' %}
+
+{% block content %}
+<style>
+  tbody tr:nth-child(odd) {
+    background-color: #F2F2F2; /* Gris clair */
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #E6E6E6; /* Gris plus foncé */
+  }
+
+  table {
+    background-color: #FFFFFF; /* Blanc */
+    width: 100%;
+    max-width: 1200px; /* Set a maximum width for the table */
+    margin: 0 auto; /* Center the table horizontally */
+  }
+
+  th, td {
+    padding: 10px; /* Add padding to cells for better spacing */
+  }
+</style>
+
+<br>
+
+<center>
+  <div class="col-12">
+    <h5>Liste des techniciens et des demandes de réparation</h5>
+    <hr>
+    <div class="card card-body">
+      {% if techniciens %}
+        <div class="table-responsive"> <!-- Add a wrapper div with class "table-responsive" for responsive behavior -->
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th>Nom Technicien</th>
+                <th>ID Demande</th>
+                <th>Employe</th>
+                <th>Statuts</th>
+                <th>Assigner</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for technicien in techniciens %}
+                {% for demande in demandes %}
+                  <tr>
+                    <td>{{ technicien.Nom }}</td>
+                    <td>{{ demande.ID_D }}</td>
+                    <td>{{ demande.employe.nomE }}</td>
+                    <td>{{ demande.statuts }}</td>
+                    <td><a class='btn btn-sm btn-success' href="{% url 'assigner_untec' demande.ID_D technicien.ID_T %}">Assigner ce Technicien</a></td>
+                  </tr>
+                {% endfor %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <p>Désolé, aucun technicien n'est libre</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <br>
+
+</center>
+
+{% endblock content %}

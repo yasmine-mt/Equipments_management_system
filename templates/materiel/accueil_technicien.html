@@ -1,0 +1,35 @@
+{% extends 'main3.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  .supervisor-box {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .supervisor-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+</style>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
+      <br>
+      <div class="supervisor-box">
+        <i class="supervisor-icon fas fa-wrench"></i>
+        <h4>Bienvenue dans votre espace technicien</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Include the FontAwesome CSS and JavaScript files -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+{% endblock content %}

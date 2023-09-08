@@ -1,0 +1,61 @@
+{% extends 'main2.html' %}
+
+{% block content %}
+<head>
+  <style>
+    .shape-container {
+      display: flex;
+      justify-content: space-between; /* Align boxes side by side */
+      margin-top: 50px;
+    }
+
+    .shape {
+      width: 300px;
+      height: 500px;
+      background-color: papayawhip;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      position: relative;
+      cursor: pointer; /* Make the shape clickable */
+    }
+
+    .shape:hover {
+      background-color: lightgray; /* Change background color on hover */
+    }
+
+    .demande-icon {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 24px;
+    }
+  </style>
+  <script>
+    function handleShapeClick(destination) {
+      window.location.href = destination;
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+
+  <h3>Veuillez choisir la nature de la demande:</h3>
+  <hr>
+  <div class="shape-container">
+    <div class="shape" onclick="handleShapeClick('{% url 'demande_reparation' %}')">
+      <span class="demande-icon"><i class="fas fa-tools"></i></span>
+      Demande de réparation
+    </div>
+    <div class="shape" onclick="handleShapeClick('{% url 'demande_attribution' %}')">
+      <span class="demande-icon"><i class="fas fa-share-alt"></i></span>
+      Demande d'attribution
+    </div>
+  </div>
+</body>
+{% endblock %}

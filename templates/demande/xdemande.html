@@ -1,0 +1,51 @@
+{% extends 'main2.html' %}
+
+{% block content %}
+<style>
+  tbody tr:nth-child(odd) {
+    background-color: #F2F2F2; /* Gris clair */
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #E6E6E6; /* Gris plus foncé */
+  }
+
+  table {
+    background-color: #FFFFFF; /* Blanc */
+  }
+</style>
+
+<br>
+
+<center>
+	<div class="col-12">
+		<h5>Les demandes</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-secondary  btn-info btn-block" href="{% url 'volet' %}">Consulter un volet</a>
+			<a class="btn btn-secondary  btn-info btn-block" href="{% url 'demandeass' %}">Consulter la liste des demandes assignees</a>
+			<table class="table table-sm">
+				<tr>
+					<th>ID demande</th>
+					<th>Nom d'employé</th>
+					<th>statuts</th>
+					<th>Nature</th>
+
+				</tr>
+				{% for demande in demandes  %}
+				<tr>
+
+					<th>{{demande.ID_D}}</th>
+					<th>{{demande.employe.nomE}}</th>
+					<th>{{demande.statuts}}</th>
+					<th>{{demande.type}}</th>
+
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div></center>
+
+
+{% endblock content%}
+

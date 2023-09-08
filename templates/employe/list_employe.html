@@ -1,0 +1,75 @@
+{% extends 'main2.html' %}
+{% block content %}
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Employé:</h5>
+			<hr>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'supprimer_employe' Employe.ID_E %}">Supprimer l'employé</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Informations</h5>
+			<hr>
+			<p>Nom : {{Employe.nomE}} </p>
+			<p>département: {{Employe.departement}}</p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total des demandes</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{demande_total}}</h1>
+		</div>
+	</div>
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+
+		   	<button class="btn btn-primary" type="submit">Search</button>
+		       {{myFilter.form}}
+		</form>
+		</div>
+	</div>
+
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th> Identifiant demande </th>
+					<th>Date de demande</th>
+
+					<th>Status</th>
+
+				</tr>
+                 {%for demande in demande%}
+				<tr>
+					<th>{{demande.ID_D}}</th>
+					<th>{{demande.date_creation}}</th>
+
+					<th>{{demande.statuts}}</th>
+
+				</tr>
+                {% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock content%}

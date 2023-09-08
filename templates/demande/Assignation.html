@@ -1,0 +1,47 @@
+{% extends 'main2.html' %}
+
+{% block content %}
+<style>
+  tbody tr:nth-child(odd) {
+    background-color: #F2F2F2; /* Gris clair */
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #E6E6E6; /* Gris plus foncé */
+  }
+
+  table {
+    background-color: #FFFFFF; /* Blanc */
+  }
+</style>
+
+<br>
+
+<center>
+  <div class="col-12">
+    <h5>Demandes Assignées </h5>
+    <hr>
+    <div class="card card-body">
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th>ID Demande</th>
+            <th>Nom Technicien</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for demande_assignee in demandes_assignees %}
+            <tr>
+              <td>{{ demande_assignee.ID_D }}</td>
+              <td>{{ demande_assignee.technicien.Nom }}</td>
+              <td>{{ demande_assignee.statuts }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</center>
+
+{% endblock %}

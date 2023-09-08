@@ -1,0 +1,60 @@
+
+{% extends 'main2.html' %}
+
+{% block content %}
+<style>
+  tbody tr:nth-child(odd) {
+    background-color: #F2F2F2; /* Gris clair */
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #E6E6E6; /* Gris plus foncé */
+  }
+
+  table {
+    background-color: #FFFFFF; /* Blanc */
+  }
+</style>
+
+<br>
+
+
+<center>
+    <center>
+
+   	<div class="col-12">
+		<h5>Les matériels </h5>
+		<hr>
+		<div class="card card-body">
+
+			<a class="btn btn-secondary btn-info btn-block" href="{% url 'enreg_materiel' %}">Enregistrer un Matériel</a>
+          <table  class="table table-sm">
+				<tr>
+
+					<th>ID_matériel</th>
+					<th>Date de réception</th>
+					<th>Type</th>
+
+				</tr>
+				{% for materiel in materiels  %}
+				<tr>
+					<th>{{materiel.ID_M}}</th>
+					<th>{{materiel.datedereception}}</th>
+					<th>
+						{% for tag in materiel.departement.all %}
+						  {{ tag.departement_m }}
+						{% endfor %}
+					  </th>
+					  
+
+
+				</tr>
+					{% endfor %}
+			</table>
+		</div>
+	</div>
+
+</div>
+    </center>
+
+{% endblock content%}
