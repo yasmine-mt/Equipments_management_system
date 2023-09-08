@@ -247,14 +247,15 @@
             {% csrf_token %}
             <div class="inputBox">
                 <div class="inputBox">
-                    <input type="text" name="nom_utilisateur" required="required" placeholder="Entrer votre nom d'utilisateur">
-                    <span>Utilisateur</span>
+                    <input type="email" name="email" required="required" placeholder="Entrer votre adresse e-mail">
+                    <span>Adresse e-mail</span>
                     <i></i>
                 </div>
                 <div class="inputBox">
                     <input type="password" name="mot_de_passe" required="required" placeholder="Entrer votre mot de passe">
                     <span>Mot de passe</span>
                     <i></i>
+                
                 </div>
             </div>
             <ul class="messages">
